@@ -7,8 +7,8 @@ import authRouter from "./routes/auth.route.js";
 dotenv.config();
 
 const app = express();
-
-mongoose.connect(process.env.MONGO, {});
+const mongo = process.env.MONGO;
+mongoose.connect(mongo, {});
 
 const db = mongoose.connection;
 
@@ -17,7 +17,7 @@ db.on("error", (error) => {
 });
 
 db.once("open", () => {
-  console.log("Connected to MongoDB");
+  console.log(`Database is connected  on port ${mongo}`);
 
   // Start your server or perform other actions after successful connection
   const port = process.env.PORT || 3000;
