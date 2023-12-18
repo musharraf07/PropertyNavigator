@@ -28,6 +28,7 @@ export default function AuthO() {
       });
       const data = await res.json();
       dispatch(signInSuccess(data));
+      console.log(data);
       navigatge("/");
     } catch (error) {
       console.log("could not sign in with google", error);
