@@ -27,6 +27,7 @@ export const signin = async (req, res, next) => {
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
       .json(rest);
+    // console.log(token);
   } catch (error) {
     next(error);
   }
@@ -39,7 +40,7 @@ export const google = async (req, res, next) => {
       const token = jwt.sign({ id: user_id }, process.env.JWT_SECRET);
       const { password: pass, ...rest } = user._doc;
       res
-        .cookie("access_token", token, { shttpOnly: true })
+        .cookie("access_token", token, { httpOnly: true })
         .status(200)
         .json(rest);
     } else {

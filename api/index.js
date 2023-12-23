@@ -5,6 +5,7 @@ import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 
+import { verifyToken } from "./utils/verifyUser.js";
 dotenv.config();
 
 const app = express();
@@ -29,6 +30,7 @@ db.once("open", () => {
 });
 app.use(express.json());
 app.use(cookieParser());
+app.use(verifyToken);
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 
