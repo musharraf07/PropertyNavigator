@@ -1,7 +1,6 @@
 import express from "express";
 import { test, updateUser } from "../controllers/user.controller.js";
-import jwt from "jsonwebtoken";
-const verifyToken = jwt.verify;
+import { verifyToken } from "../utils/verifyUser.js";
 
 const router = express.Router();
 
